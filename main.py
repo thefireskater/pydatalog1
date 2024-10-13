@@ -30,3 +30,20 @@ cursor.execute("INSERT INTO person VALUES ('Bob', 31)")
 
 rows = cursor.execute("SELECT name FROM person WHERE age < 31").fetchall()
 print(rows)
+
+class Person(pyDatalog.Mixin):
+
+    def __init__(self, name, location, age):
+        super(Person, self).__init__()
+        self.name = name
+        self.location = location
+        self.age = age
+
+    def __repr__(self):
+        return self.name
+
+John = Person('John', 'San Francisco', 27)
+Mary = Person('Mary', 'San Francisco', 29)
+Sam = Person('Sam', 'Austin', 19)
+
+print(Person.location[X] == 'San Francisco')
